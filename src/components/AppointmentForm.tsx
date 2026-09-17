@@ -1,10 +1,10 @@
 import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { services } from "@/config/business";
+import { business, services } from "@/config/business";
 import { Button } from "./ui/action-button";
 
 type Errors = Partial<Record<string, string>>;
-type Status = "idle" | "loading" | "success" | "error";
+type Status = "idle" | "loading" | "error";
 
 const fieldClass =
   "w-full rounded-xl border border-input bg-card px-4 py-3 text-[0.95rem] text-foreground transition-colors placeholder:text-muted-foreground focus:border-secondary focus:outline-none";
@@ -36,40 +36,23 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
       setStatus("idle");
       return;
     }
-
     setStatus("loading");
     try {
-      // No backend is connected in this demo build. Connect Lovable Cloud or an
-      // email/WhatsApp integration here to deliver the request to the clinic.
-      await new Promise((resolve) => setTimeout(resolve, 900));
-      setStatus("success");
-      form.reset();
+      const message = [
+        "Hello Bari Dental Clinic, I would like to request an appointment.",
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `Preferred contact: ${get("contactMethod")}`,
+        `Reason: ${get("reason")}`,
+        get("preferredDate") ? `Preferred date: ${get("preferredDate")}` : "",
+        get("preferredTime") ? `Preferred time: ${get("preferredTime")}` : "",
+        get("message") ? `Message: ${get("message")}` : "",
+      ].filter(Boolean).join("\n");
+      window.location.href = `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      setStatus("idle");
     } catch {
       setStatus("error");
     }
-  }
-
-  if (status === "success") {
-    return (
-      <div
-        role="status"
-        className="rounded-3xl border border-secondary/30 bg-accent p-8 text-center"
-      >
-        <CheckCircle2 className="mx-auto size-10 text-secondary" aria-hidden="true" />
-        <h3 className="mt-4 text-xl">Request received</h3>
-        <p className="mt-2 text-muted-foreground">
-          Thank you. Your appointment request has been received. Our team will
-          contact you to confirm availability.
-        </p>
-        <Button
-          variant="outline"
-          className="mt-6"
-          onClick={() => setStatus("idle")}
-        >
-          Send another request
-        </Button>
-      </div>
-    );
   }
 
   return (
@@ -176,11 +159,11 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
         {status === "loading" && (
           <Loader2 className="size-4 animate-spin" aria-hidden="true" />
         )}
-        {status === "loading" ? "Sending request…" : "Request Appointment"}
+        {status === "loading" ? "Opening WhatsApp…" : "Send Appointment Request"}
       </Button>
 
       <p className="text-xs text-muted-foreground">
-        Submitting this form sends a request only. Your appointment is not
+        Your details will open in WhatsApp as a pre-filled message. Your appointment is not
         confirmed until a team member contacts you.
       </p>
     </form>

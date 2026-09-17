@@ -7,6 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ButtonLink } from "@/components/ui/action-button";
 import { business, fullAddress } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title = "About Our Clinic | Bari Dental Clinic, North Nazimabad Karachi";
 const description =
@@ -20,9 +21,12 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/about") },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/about") }],
   }),
   component: AboutPage,
 });
@@ -69,11 +73,6 @@ function AboutPage() {
             title="A Dental Clinic in North Nazimabad, Karachi"
             description={`${business.name} is a dental clinic located at ${fullAddress}. Patients are welcome to get in touch to ask about available dental services and appointment availability.`}
           >
-            <p className="mt-4 rounded-2xl bg-accent p-4 text-sm text-accent-foreground">
-              [Editable — Confirm with Clinic] Add the clinic&apos;s own story,
-              philosophy of care, and any verified details the owner would like
-              to share here.
-            </p>
           </SectionHeading>
         </div>
       </section>
@@ -99,7 +98,7 @@ function AboutPage() {
           <SectionHeading
             eyebrow="Facilities"
             title="A Clean, Modern Treatment Environment"
-            description="[Editable — Confirm with Clinic] Add verified details about the clinic's facilities, equipment and hygiene practices once confirmed by the business owner."
+            description="Contact the clinic if you would like to ask about facilities, treatment arrangements or what to expect during your visit."
           >
             <div className="mt-8">
               <ButtonLink to="/services" size="lg">

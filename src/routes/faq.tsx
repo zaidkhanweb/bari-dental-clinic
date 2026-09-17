@@ -3,6 +3,7 @@ import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PageHeader } from "@/components/PageHeader";
 import { faqs } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title = "Dentist FAQs | Bari Dental Clinic, North Nazimabad Karachi";
 const description =
@@ -16,9 +17,12 @@ export const Route = createFileRoute("/faq")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/faq" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/faq") },
     ],
-    links: [{ rel: "canonical", href: "/faq" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/faq") }],
   }),
   component: FaqPage,
 });
@@ -29,7 +33,7 @@ function FaqPage() {
       <PageHeader
         eyebrow="FAQ"
         title="Frequently Asked Questions"
-        description="Answers below are editable and should be confirmed with the clinic before publishing."
+        description="Helpful answers about appointments, location, services and contacting the clinic."
       />
 
       <section className="container-page py-20">

@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/action-button";
 import { services, whatsappUrl } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title = "Dental Services | Bari Dental Clinic, North Nazimabad Karachi";
 const description =
@@ -18,9 +19,12 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/services" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/services") },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/services") }],
   }),
   component: ServicesPage,
 });

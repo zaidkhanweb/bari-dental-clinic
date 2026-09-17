@@ -1,8 +1,7 @@
 /**
  * ---------------------------------------------------------------------------
  * SINGLE SOURCE OF TRUTH — edit this file to update the whole website.
- * Anything wrapped in [ ] is a placeholder that must be confirmed with the
- * clinic before the site goes live.
+ * Keep verified business details here so the website can be updated from one place.
  * ---------------------------------------------------------------------------
  */
 
@@ -27,40 +26,20 @@ export const business = {
     city: "Karachi",
     region: "Sindh",
     country: "Pakistan",
-    postalCode: "", // [Editable — Confirm with Clinic]
+    postalCode: "",
   },
-
-  // [Editable — Confirm with Clinic] approximate coordinates for North Nazimabad Block M.
-  coordinates: { latitude: 24.9403, longitude: 67.0387 },
 
   mapsUrl: "https://maps.app.goo.gl/95TD8RrLRd4kzFkFA",
   directionsUrl: "https://maps.app.goo.gl/95TD8RrLRd4kzFkFA",
   mapsEmbedQuery:
     "Marhaba Galaxy, Block M, North Nazimabad Town, Karachi, Pakistan",
 
-  // Google review link — replace with the clinic's "write/see reviews" URL.
   reviewsUrl: "https://maps.app.goo.gl/95TD8RrLRd4kzFkFA",
 
-  rating: {
-    value: "4.7",
-    // Review counts change over time — update here, never hard-coded in components.
-    count: "[Add Verified Review Count]",
-  },
+  openingHours: [],
+  openingHoursNote: "Please call the clinic to confirm current opening hours.",
 
-  // [CONFIRM CURRENT OPENING HOURS] — replace each value once confirmed.
-  openingHours: [
-    { day: "Monday", hours: "[Confirm with Clinic]" },
-    { day: "Tuesday", hours: "[Confirm with Clinic]" },
-    { day: "Wednesday", hours: "[Confirm with Clinic]" },
-    { day: "Thursday", hours: "[Confirm with Clinic]" },
-    { day: "Friday", hours: "[Confirm with Clinic]" },
-    { day: "Saturday", hours: "[Confirm with Clinic]" },
-    { day: "Sunday", hours: "[Confirm with Clinic]" },
-  ],
-  openingHoursNote:
-    "Opening hours are being confirmed with the clinic. Please call before visiting.",
-
-  email: "", // [Editable — Confirm with Clinic]
+  email: "",
 
   // Leave empty strings to hide a social icon completely.
   social: {
@@ -88,7 +67,7 @@ export type Service = {
   detail: string;
 };
 
-/** Services are treated as editable until confirmed by the clinic. */
+/** Dental services currently presented on the website. */
 export const services: Service[] = [
   {
     slug: "general-dentistry",
@@ -96,7 +75,7 @@ export const services: Service[] = [
     description:
       "Everyday dental care and advice for adults and children, discussed with you before treatment begins.",
     detail:
-      "Talk to the clinic about routine dental care needs and what a general dentistry appointment can include. [Editable — Confirm with Clinic]",
+      "Talk to the clinic about routine dental care needs and what a general dentistry appointment can include.",
   },
   {
     slug: "dental-checkups",
@@ -104,7 +83,7 @@ export const services: Service[] = [
     description:
       "A dental examination where your concerns are reviewed and options are explained clearly.",
     detail:
-      "Ask the clinic what a checkup appointment covers and how often a checkup may be suggested for you. [Editable — Confirm with Clinic]",
+      "Ask the clinic what a checkup appointment covers and how often a checkup may be suggested for you.",
   },
   {
     slug: "root-canal-treatment",
@@ -112,7 +91,7 @@ export const services: Service[] = [
     description:
       "Treatment for an affected tooth, with the process and aftercare explained beforehand.",
     detail:
-      "Discuss your symptoms with the clinic to understand whether root canal treatment may be appropriate. [Editable — Confirm with Clinic]",
+      "Discuss your symptoms with the clinic to understand whether root canal treatment may be appropriate.",
   },
   {
     slug: "dental-crowns",
@@ -120,7 +99,7 @@ export const services: Service[] = [
     description:
       "Restorative options for damaged or treated teeth, discussed case by case.",
     detail:
-      "Contact the clinic to ask about crown options, materials and the number of visits involved. [Editable — Confirm with Clinic]",
+      "Contact the clinic to ask about crown options, materials and the number of visits involved.",
   },
   {
     slug: "orthodontic-care",
@@ -128,7 +107,7 @@ export const services: Service[] = [
     description:
       "Guidance on alignment concerns and the treatment options that may be available.",
     detail:
-      "Ask the clinic about orthodontic assessment and which approaches are offered. [Editable — Confirm with Clinic]",
+      "Ask the clinic about orthodontic assessment and which approaches are offered.",
   },
   {
     slug: "wisdom-tooth-treatment",
@@ -136,26 +115,7 @@ export const services: Service[] = [
     description:
       "Assessment and treatment options for wisdom tooth discomfort or complications.",
     detail:
-      "Speak to the clinic about wisdom tooth pain and what an assessment appointment involves. [Editable — Confirm with Clinic]",
-  },
-];
-
-/** Team members are intentionally unverified placeholders. */
-export const team = [
-  {
-    name: "[Add Verified Name]",
-    role: "[Add Verified Role]",
-    note: "[Add verified qualifications and areas of practice — confirm with clinic]",
-  },
-  {
-    name: "[Add Verified Name]",
-    role: "[Add Verified Role]",
-    note: "[Add verified qualifications and areas of practice — confirm with clinic]",
-  },
-  {
-    name: "[Add Verified Name]",
-    role: "[Add Verified Role]",
-    note: "[Add verified qualifications and areas of practice — confirm with clinic]",
+      "Speak to the clinic about wisdom tooth pain and what an assessment appointment involves.",
   },
 ];
 
@@ -163,7 +123,7 @@ export const faqs = [
   {
     question: "How can I book an appointment?",
     answer:
-      "You can call the clinic, send a WhatsApp message, or submit the appointment request form on this website. A team member will contact you to confirm availability. Requests submitted online are not automatically confirmed.",
+      "You can call the clinic, send a WhatsApp message, or use the appointment request form to prepare a WhatsApp enquiry. The clinic will confirm availability directly with you.",
   },
   {
     question: "Where is the clinic located?",
@@ -172,16 +132,16 @@ export const faqs = [
   {
     question: "What dental services are available?",
     answer:
-      "Publicly listed services include general dentistry, dental checkups, root canal treatment, dental crowns, orthodontic care and wisdom tooth treatment. Please contact the clinic to confirm availability for your specific needs. [Editable — Confirm with Clinic]",
+      "Publicly listed services include general dentistry, dental checkups, root canal treatment, dental crowns, orthodontic care and wisdom tooth treatment. Please contact the clinic to confirm availability for your specific needs.",
   },
   {
     question: "Can I contact the clinic through WhatsApp?",
-    answer: `Yes — you can send a WhatsApp message to ${business.phone} to ask about treatments and appointment availability. [Editable — Confirm with Clinic]`,
+    answer: `Yes — you can send a WhatsApp message to ${business.phone} to ask about treatments and appointment availability.`,
   },
   {
     question: "What are the clinic's current timings?",
     answer:
-      "[CONFIRM CURRENT OPENING HOURS] Opening hours can change, so we recommend calling the clinic before visiting.",
+      "Opening hours can change, so we recommend calling the clinic before visiting.",
   },
 ];
 

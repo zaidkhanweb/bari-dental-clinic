@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ButtonAnchor } from "@/components/ui/action-button";
 import { business, whatsappUrl } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title = "Contact Us | Bari Dental Clinic, North Nazimabad Karachi";
 const description =
@@ -19,9 +20,12 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/contact") },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
   }),
   component: ContactPage,
 });
@@ -36,7 +40,7 @@ function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Get in Touch with Our Clinic"
-        description="Call, message on WhatsApp, or send an appointment request and our team will contact you to confirm availability."
+        description="Call, message on WhatsApp, or prepare an appointment request to check availability with the clinic."
       />
 
       <section className="container-page grid gap-12 py-20 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
@@ -113,7 +117,7 @@ function ContactPage() {
           <SectionHeading
             eyebrow="Appointment Request"
             title="Request an Appointment"
-            description="Share a few details and our team will contact you to confirm availability."
+            description="Share a few details, then continue to WhatsApp to send your appointment request."
           />
           <div className="mt-8">
             <AppointmentForm />

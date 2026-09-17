@@ -6,11 +6,11 @@ import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Gallery } from "@/components/Gallery";
 import { Reveal } from "@/components/Reveal";
-import { ReviewCard } from "@/components/ReviewCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/action-button";
 import { business, faqs, services, whatsappUrl } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title =
   "Bari Dental Clinic & Consultant Clinic | Dentist in North Nazimabad, Karachi";
@@ -25,10 +25,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
     scripts: [
       {
         type: "application/ld+json",
@@ -37,19 +39,14 @@ export const Route = createFileRoute("/")({
           "@type": "Dentist",
           name: business.name,
           telephone: business.phone,
-          url: "/",
-          image: "/favicon.ico",
+          url: absoluteUrl("/"),
+          image: absoluteUrl("/favicon.ico"),
           address: {
             "@type": "PostalAddress",
             streetAddress: `${business.address.line1}, ${business.address.line2}`,
             addressLocality: `${business.address.line3}, ${business.address.city}`,
             addressRegion: business.address.region,
             addressCountry: "PK",
-          },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: business.coordinates.latitude,
-            longitude: business.coordinates.longitude,
           },
           hasMap: business.mapsUrl,
           areaServed: "North Nazimabad, Karachi",
@@ -61,8 +58,8 @@ export const Route = createFileRoute("/")({
 });
 
 const trustItems = [
-  { icon: Star, label: `${business.rating.value} Google Rating` },
-  { icon: MessageCircle, label: `${business.rating.count} Google Reviews` },
+  { icon: Star, label: "View Google Reviews" },
+  { icon: MessageCircle, label: "WhatsApp Appointment Enquiry" },
   { icon: MapPin, label: "North Nazimabad, Karachi" },
   { icon: CalendarCheck, label: "Easy Appointment Enquiry" },
 ];
@@ -272,7 +269,7 @@ function HomePage() {
         <SectionHeading
           eyebrow="Gallery"
           title="Inside Our Clinic"
-          description="Illustrative imagery for this demo. These photos are placeholders and will be replaced with the clinic's own photography."
+          description="A look at the clinic environment and dental care setting."
         />
         <div className="mt-12">
           <Gallery />
@@ -287,13 +284,6 @@ function HomePage() {
             title="What Patients Are Saying"
             description="Explore genuine patient feedback and learn more about experiences shared by patients."
           />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <Reveal key={i} delay={i * 60} className="h-full">
-                <ReviewCard />
-              </Reveal>
-            ))}
-          </div>
           <div className="mt-10">
             <ButtonAnchor
               href={business.reviewsUrl}

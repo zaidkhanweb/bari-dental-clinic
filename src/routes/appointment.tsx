@@ -5,10 +5,11 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { ButtonAnchor } from "@/components/ui/action-button";
 import { business, whatsappUrl } from "@/config/business";
+import { absoluteUrl } from "@/config/seo";
 
 const title = "Book an Appointment | Bari Dental Clinic, North Nazimabad Karachi";
 const description =
-  "Request a dental appointment at Bari Dental Clinic & Consultant Clinic in North Nazimabad, Karachi. Our team will contact you to confirm availability.";
+  "Prepare a WhatsApp appointment request for Bari Dental Clinic & Consultant Clinic in North Nazimabad, Karachi and confirm availability directly with the clinic.";
 
 export const Route = createFileRoute("/appointment")({
   head: () => ({
@@ -18,16 +19,19 @@ export const Route = createFileRoute("/appointment")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/appointment" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { property: "og:url", content: absoluteUrl("/appointment") },
     ],
-    links: [{ rel: "canonical", href: "/appointment" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/appointment") }],
   }),
   component: AppointmentPage,
 });
 
 const steps = [
-  "Send your request using the form.",
-  "Our team reviews it and contacts you.",
+  "Fill in your details and continue to WhatsApp.",
+  "Send the pre-filled appointment request to the clinic.",
   "Your appointment time is confirmed with you directly.",
 ];
 
@@ -37,7 +41,7 @@ function AppointmentPage() {
       <PageHeader
         eyebrow="Appointments"
         title="Request an Appointment"
-        description="Fill in the form below to request an appointment. Requests are not automatically confirmed — a team member will contact you to arrange a suitable time."
+        description="Fill in the form below and continue to WhatsApp with your appointment details pre-filled. The clinic will confirm a suitable time directly with you."
       />
 
       <section className="container-page grid gap-12 py-20 lg:grid-cols-[1.4fr_1fr] lg:gap-16">

@@ -116,15 +116,7 @@ export function Footer() {
           <h2 className="font-display text-sm font-bold tracking-[0.14em] uppercase">
             Opening Hours
           </h2>
-          <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-            {business.openingHours.map((row) => (
-              <li key={row.day} className="flex justify-between gap-3">
-                <span>{row.day}</span>
-                <span className="text-right text-foreground/80">{row.hours}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-xs text-muted-foreground">
+          <p className="mt-5 text-sm text-muted-foreground">
             {business.openingHoursNote}
           </p>
         </div>
